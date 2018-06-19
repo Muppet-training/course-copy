@@ -9,6 +9,18 @@ module.exports = function validateRecipeInput(data) {
   data.ingredients = !isEmpty(data.ingredients) ? data.ingredients : '';
   data.time = !isEmpty(data.time) ? data.time : '';
 
+  if (!Validator.isNumeric(data.price)) {
+    if(!Validator.isDecimal(data.price)) {
+      errors.price = 'Price must be a number';
+    }
+  }
+  
+  if (!Validator.isNumeric(data.time)) {
+    if(!Validator.isDecimal(data.price)) {
+      errors.time = 'Time needs to be a number and written in minutes';
+    }
+  }
+
   if (Validator.isEmpty(data.name)) {
     errors.name = 'Recipe name field is required';
   }
@@ -25,13 +37,6 @@ module.exports = function validateRecipeInput(data) {
     errors.time = 'How long did the recipe take you to make?';
   }
 
-  if (!Validator.isNumeric(data.price)) {
-    errors.price = 'Price must be a number';
-  }
-
-  if (!Validator.isNumeric(data.time)) {
-    errors.time = 'Time needs to be a number and written in minutes';
-  }
 
   return {
     errors,

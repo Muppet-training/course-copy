@@ -14,6 +14,15 @@ const validateRecipeInput = require('../../validation/recipe');
 // @access  public
 router.get('/test', (req, res) => res.json({ msg: 'Recipe Works' }));
 
+// @route   GET api/recipes
+// @desc    Get recipes
+// @access  public
+router.get('/', (req, res) => {
+  Recipe.find()
+    .sort({ name: +1 })
+    .then(recipes => res.json(recipes).catch(err => res.status(404)));
+});
+
 // @route   POST api/recipes
 // @desc    Add a recipe
 // @access  private
