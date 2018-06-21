@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const TextFieldGroup = ({
+const NumberInputField = ({
 	name,
 	placeholder,
 	value,
@@ -32,11 +32,11 @@ const TextFieldGroup = ({
 	);
 };
 
-TextFieldGroup.propTypes = {
+NumberInputField.propTypes = {
 	name: PropTypes.string.isRequired,
 	label: PropTypes.string,
 	placeholder: PropTypes.string,
-	value: PropTypes.string.isRequired,
+	value: PropTypes.number.isRequired,
 	info: PropTypes.string,
 	error: PropTypes.string,
 	type: PropTypes.string.isRequired,
@@ -44,8 +44,8 @@ TextFieldGroup.propTypes = {
 	disabled: PropTypes.string
 };
 
-TextFieldGroup.defaultProps = {
-	type: 'text'
+NumberInputField.defaultProps = {
+	type: 'number'
 };
 
-export default TextFieldGroup;
+export default NumberInputField;

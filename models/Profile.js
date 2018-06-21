@@ -37,7 +37,7 @@ const ProfileSchema = new Schema({
 	},
 	payperhour: {
 		type: Number,
-		default: 25
+		required: true
 	},
 	experience: [
 		{

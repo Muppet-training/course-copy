@@ -24,6 +24,18 @@ module.exports = function validateProfileInput(data) {
 		errors.skills = 'Skills field is required';
 	}
 
+	if (!Validator.isNumeric(data.payperhour)) {
+		if (!Validator.isDecimal(data.payperhour)) {
+			errors.time =
+				'Pay per hour needs to be a number so we can use it in our calculations';
+		}
+	}
+
+	if (Validator.isEmpty(data.payperhour)) {
+		errors.payperhour =
+			'To calculate staff time we need to know the pay per hour..';
+	}
+
 	if (!isEmpty(data.website)) {
 		if (!Validator.isURL(data.website)) {
 			errors.website = 'Not a valid URL';
